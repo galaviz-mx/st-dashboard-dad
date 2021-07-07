@@ -8,12 +8,16 @@ import datetime
 
 @st.cache
 def get_data_v():
-    libro = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS97LrfjABDIYNcpmilR916ORtEk7-6gjEb32SwYjy0OHivnp-pUGRZDH_x3_RXlZU0oTEdV1XUgLhj/pub?output=xlsx'
-    hoja_data = 'DATA'
-    hoja_obj = 'OBJECTS'
+    #libro = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS97LrfjABDIYNcpmilR916ORtEk7-6gjEb32SwYjy0OHivnp-pUGRZDH_x3_RXlZU0oTEdV1XUgLhj/pub?output=xlsx'
+    #hoja_data = 'DATA'
+    #hoja_obj = 'OBJECTS'
+    #datos = pd.read_excel(libro, sheet_name=hoja_data, dtype={'VALUE': np.int64})
+    #datos_objetos = pd.read_excel(libro, sheet_name=hoja_obj)
 
-    datos = pd.read_excel(libro, sheet_name=hoja_data, dtype={'VALUE': np.int64})
-    datos_objetos = pd.read_excel(libro, sheet_name=hoja_obj)
+    datos = pd.read_csv('DATA.csv', parse_dates=['DATE'], dayfirst=True, thousands=',')
+    datos_objetos = pd.read_csv('OBJECTS.csv')
+    print(datos)
+
     datos_objetos.set_index('ID', inplace=True)
     datos_objetos = datos_objetos.loc[datos_objetos.TYPE=='VEHICLE'].copy()
 
@@ -70,12 +74,15 @@ def get_data_v():
 
 @st.cache
 def get_data_s():
-    libro = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS97LrfjABDIYNcpmilR916ORtEk7-6gjEb32SwYjy0OHivnp-pUGRZDH_x3_RXlZU0oTEdV1XUgLhj/pub?output=xlsx'
-    hoja_data = 'DATA'
-    hoja_obj = 'OBJECTS'
+    #libro = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS97LrfjABDIYNcpmilR916ORtEk7-6gjEb32SwYjy0OHivnp-pUGRZDH_x3_RXlZU0oTEdV1XUgLhj/pub?output=xlsx'
+    #hoja_data = 'DATA'
+    #hoja_obj = 'OBJECTS'
+    #datos = pd.read_excel(libro, sheet_name=hoja_data, dtype={'VALUE': np.int64})
+    #datos_objetos = pd.read_excel(libro, sheet_name=hoja_obj)
 
-    datos = pd.read_excel(libro, sheet_name=hoja_data, dtype={'VALUE': np.int64})
-    datos_objetos = pd.read_excel(libro, sheet_name=hoja_obj)
+    datos = pd.read_csv('DATA.csv', parse_dates=['DATE'], dayfirst=True, thousands=',')
+    datos_objetos = pd.read_csv('OBJECTS.csv')
+
     datos_objetos.set_index('ID', inplace=True)
     datos_objetos = datos_objetos.loc[datos_objetos.TYPE=='SERVICE'].copy()
 
