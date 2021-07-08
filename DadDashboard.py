@@ -133,10 +133,10 @@ services_container = st.beta_container()
 
 with header_container:
 	st.image('logo chg.png')
-	st.title('Dad\'s vehicles & services dashboard')
+	st.title('Dad’s vehicles & house services dashboard')
 	#st.header("Welcome!")
 	#st.subheader('Believed or not, my dad keep records every two week of all his odometers car\'s and services meters')
-	st.write('Believed or not, my dad keep records every two week of all his odometers vehicles and services meters. Let see how the look like.')
+	st.write('Believe it or not, my dad keeps biweekly records of all his vehicle’s odometers and services meters. Let’s see how they look like.')
 
 with vehicles_container:
     st.header('Vehicles data')
@@ -156,7 +156,7 @@ with vehicles_container:
     fig1['layout']['yaxis'].update(showgrid=True, side='left', title= 'Odometer KM')
     fig1.update_layout(title=dict(text='Monthly odometer', y=0.925, x=0.5, xanchor='center', yanchor='top') ,legend=dict(yanchor='top', xanchor='left', x=1, y=1))
     col_2.write(fig1)
-    st.write('Observations: Before pandemic confinement the XTRAIL and lastly the SIENNA were used to make travels, after confinement just essentials travels were made by the DAKOTA and more recently XTRAIL start to make travels. VENTO daily basis use.')
+    st.write('Before pandemic confinement the XTRAIL and the SIENNA were used for long distance travels; after confinement just essential travels were made on the DAKOTA and more recently XTRAIL was started being used for long distance travels. VENTO is used on a daily basis for inside the city transportation.')
 
 with services_container:
     st.header('Services data')
@@ -172,8 +172,7 @@ with services_container:
     fig3_n = fig3_n.iloc[0]['CONSUMPTION']
     fig3.add_annotation(x=5, y=fig3_n, text='confinement', showarrow=True, arrowhead=2, arrowcolor='white', arrowsize=1, arrowwidth=2)
     col_1.write(fig3)
-    st.write('Observations: After pandemic confinement my father\'s stay more time in home, but despite they live in a very hot weather they avoid temperatures changes so they minimize the use of AC, and so the lover energy consumption. About the potable water consumption, I guess less activities mean less consumption, the last 2 months they have a leak that just was repaired.')
-
+    
     datos_fig4 = datos_s.loc[(datos_s.OBJECT=='Water COMAPA')].copy()
     fig4 = px.line(datos_fig4, x='Month', y='CONSUMPTION', color='Year', color_discrete_sequence=px.colors.sequential.Plasma_r, line_shape='spline')
     fig4['layout']['yaxis'].update(showgrid=True, side='left', title= 'Potable Water M3')
@@ -184,4 +183,5 @@ with services_container:
     fig4.add_annotation(x=5, y=fig4_n, text='confinement', showarrow=True, arrowhead=2, arrowcolor='white', arrowsize=1, arrowwidth=2)
     col_2.write(fig4)
 
+    st.write('After pandemic confinement my parents stay more time in home, but despite living in a very hot weather they avoid temperature changes so they minimize the use of AC, and so the lower energy consumption. About potable water consumption, I guess less activities mean less consumption, the last 2 months they have had a leak that was recently repaired.')
 # %%
